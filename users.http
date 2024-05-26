@@ -4,11 +4,14 @@
 GET {{baseUrl}}/users
 
 ###
+GET {{baseUrl}}/users/{USER_ID}
+
+###
 POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "username": "Naruto",
+  "username": "darlley",
   "displayName": "Darlley Brito",
   "avatarUrl": "https://github.com/darlley.png"
 }

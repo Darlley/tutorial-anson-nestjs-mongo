@@ -10,8 +10,7 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   create(createUserDto: CreateUserDto) {
-    console.log('UsersService@create', createUserDto);
-
+    console.log('UsersService@create');
     return new this.userModel(createUserDto).save();
   }
 
@@ -20,8 +19,9 @@ export class UsersService {
     return this.userModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    console.log('UsersService@findOne');
+    return this.userModel.findById(id);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
