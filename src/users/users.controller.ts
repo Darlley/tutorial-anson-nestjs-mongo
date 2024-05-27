@@ -42,12 +42,20 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @UsePipes(new ValidationPipe())
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    if (!isValidObjectId(id)) throw new HttpException('Invalid User ID', 400);
+    const updatedUser = await this.usersService.update(id, updateUserDto);
+    if (!updatedUser) throw new HttpException('User not found', 404);
+    return updatedUser;
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @UsePipes(new ValidationPipe())
+  async remove(@Param('id') id: string) {
+    if (!isValidObjectId(id)) throw new HttpException('Invalid User ID', 400);
+    const deletedUser = await this.usersService.remove(id);
+    if (!deletedUser) throw new HttpException('User not found', 404);
+    return;
   }
 }

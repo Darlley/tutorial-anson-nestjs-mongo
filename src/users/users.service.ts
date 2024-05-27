@@ -23,12 +23,14 @@ export class UsersService {
     console.log('UsersService@findOne');
     return this.userModel.findById(id);
   }
-
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  
+  update(id: string, updateUserDto: UpdateUserDto) {
+    console.log('UsersService@update');
+    return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true });
   }
-
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  
+  remove(id: string) {
+    console.log('UsersService@remove');
+    return this.userModel.findByIdAndDelete(id);
   }
 }

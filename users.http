@@ -11,7 +11,19 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "username": "darlley",
-  "displayName": "Darlley Brito",
+  "username": "naruto",
+  "displayName": "Naruto Uzumaki",
   "avatarUrl": "https://github.com/darlley.png"
 }
+
+###
+PATCH {{baseUrl}}/users/{USER_ID}
+Content-Type: application/json
+
+{
+  "displayName": "Darlley Brito"
+}
+
+###
+DELETE {{baseUrl}}/users/{USER_ID}
+Content-Type: application/json
