@@ -11,9 +11,14 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
 {
-  "username": "naruto",
-  "displayName": "Naruto Uzumaki",
-  "avatarUrl": "https://github.com/darlley.png"
+  "username": "darlley",
+  "displayName": "Darlley Brito",
+  "avatarUrl": "https://github.com/darlley.png",
+  "settings": {
+    "receiveNotifications": true,
+    "receiveEmails": false,
+    "receiveSMS": false
+  }
 }
 
 ###
