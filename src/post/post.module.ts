@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
-
-import { UserSettings, UserSettingsSchema } from 'src/schemas/user-settings.schema';
+import { PostService } from './post.service';
+import { PostController } from './post.controller';
 import { User, UserSchema } from 'src/schemas/user.schema';
+import { UserSettings, UserSettingsSchema } from 'src/schemas/user-settings.schema';
 import { Post, PostSchema } from 'src/schemas/post.schema';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -24,7 +23,7 @@ import { Post, PostSchema } from 'src/schemas/post.schema';
       },
     ]),
   ],
-  controllers: [UsersController],
-  providers: [UsersService],
+  controllers: [PostController],
+  providers: [PostService],
 })
-export class UsersModule {}
+export class PostModule {}

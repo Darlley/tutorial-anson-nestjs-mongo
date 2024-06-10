@@ -1,7 +1,13 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsNotEmpty, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 
-export class CreateUserSttingsDto {
+export class CreateUserSettingsDto {
   @IsBoolean()
   @IsOptional()
   receiveNotifications?: boolean;
@@ -13,6 +19,16 @@ export class CreateUserSttingsDto {
   @IsBoolean()
   @IsOptional()
   receiveSMS?: boolean;
+}
+
+export class CreatePostDto {
+  @IsString()
+  @IsNotEmpty()
+  title: string;
+
+  @IsString()
+  @IsNotEmpty()
+  description: string;
 }
 
 export class CreateUserDto {
@@ -27,9 +43,9 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   avatarUrl?: string;
-  
+
   @ValidateNested()
   @IsOptional()
-  @Type(() => CreateUserSttingsDto)
-  settings?: CreateUserSttingsDto;
+  @Type(() => CreateUserSettingsDto)
+  settings?: CreateUserSettingsDto;
 }
